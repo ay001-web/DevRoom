@@ -1,120 +1,87 @@
-# DevRoom 🚀
+# 🚀 DevRoom — Real-Time Collaborative Code Editor
 
-### Real-Time Collaborative Coding Platform for Developers
+DevRoom is a full-stack real-time collaborative code editor that allows multiple users to create or join coding rooms, write code together, chat, and execute code in real time — all inside the browser.
 
-DevRoom is a full-stack collaborative coding platform that enables developers to create coding rooms, write and execute code in real time, communicate instantly, and collaborate seamlessly. It is designed to simulate a modern developer workspace with secure authentication, live code execution, and real-time interaction.
-
----
-
-## 📌 Overview
-
-Modern software development often requires real-time collaboration, quick code testing, and smooth communication between team members. DevRoom addresses this by providing a platform where multiple developers can collaborate in coding rooms, execute code instantly, and interact through real-time communication channels.
-
-This project demonstrates full-stack engineering concepts including scalable backend architecture, secure authentication, real-time communication, API integrations, and cloud database management.
+Built with modern web technologies including React, Node.js, Socket.IO, MongoDB, and deployed on production cloud platforms.
 
 ---
 
-## ✨ Key Features
+## 🌐 Live Demo
 
-* 🔐 **Secure Authentication**
+**Frontend (Production):**
+https://dev-room-drab.vercel.app
 
-  * JWT-based authentication
-  * Google OAuth login integration
-  * Protected routes and session management
-
-* 👨‍💻 **Real-Time Collaborative Coding**
-
-  * Create and join coding rooms
-  * Collaborate with multiple users simultaneously
-  * Real-time code synchronization using Socket.io
-
-* ⚡ **Live Code Execution**
-
-  * Execute code instantly using Judge0 API
-  * Supports multiple programming languages
-  * Fast response and output rendering
-
-* 💬 **Real-Time Communication**
-
-  * Live chat for room participants
-  * Instant event broadcasting with Socket.io
-
-* 🌦 **Weather API Integration**
-
-  * External API integration for dynamic data fetching
-  * Demonstrates third-party service handling
-
-* ☁ **Cloud Database**
-
-  * MongoDB Atlas for scalable cloud storage
-  * User, room, and session data persistence
-
-* 📱 **Responsive UI**
-
-  * Optimized for desktop and mobile
-  * Smooth and modern user experience
+**Backend API Health Check:**
+https://devroom-backend-hnbu.onrender.com/api/health
 
 ---
 
-# 🏗 System Architecture
+## ✨ Features
 
-## Frontend
+* 🔐 Authentication using Email/Password and Google OAuth
+* 👥 Create and join collaborative coding rooms
+* ⚡ Real-time code synchronization using WebSockets
+* 💬 Live room messaging/chat
+* 🧠 Multi-language code editor support
+* 🎨 Theme support (VS Dark and more)
+* 🏷️ Language-based room filtering
+* 👤 Room ownership and participant management
+* 🔄 Persistent room sessions using MongoDB
+* ☁️ Production deployment with Vercel + Render + MongoDB Atlas
 
-Responsible for UI rendering, user interaction, authentication flows, and API communication.
+---
 
-### Technologies Used
+## 🛠 Tech Stack
 
-* React.js
-* JavaScript
+### Frontend
+
+* React 18
+* React Router
+* Context API
+* Socket.IO Client
 * Axios
-* Socket.io Client
-* CSS / Tailwind (if applicable)
+* Monaco Editor
+* Framer Motion
+* React Hot Toast
 
----
-
-## Backend
-
-Handles business logic, authentication, room management, and real-time communication.
-
-### Technologies Used
+### Backend
 
 * Node.js
 * Express.js
-* Socket.io
-* JWT
+* Socket.IO
+* JWT Authentication
+* bcrypt.js
+* Google OAuth Library
 * REST APIs
 
----
-
-## Database
+### Database
 
 * MongoDB Atlas
+* Mongoose ODM
+
+### Deployment
+
+* Frontend → Vercel
+* Backend → Render
+* Database → MongoDB Atlas
 
 ---
 
-## External Services / APIs
+## 🏗 System Architecture
 
-* Google OAuth API
-* Judge0 API
-* OpenWeather API
-
----
-
-# 🛠 Tech Stack Summary
-
-| Layer                   | Technologies                |
-| ----------------------- | --------------------------- |
-| Frontend                | React.js, JavaScript, Axios |
-| Backend                 | Node.js, Express.js         |
-| Database                | MongoDB Atlas               |
-| Authentication          | JWT, Google OAuth           |
-| Real-Time Communication | Socket.io                   |
-| Code Execution          | Judge0 API                  |
-| Deployment              | Vercel / Render             |
+```text
+Frontend (React + Vercel)
+        ↓
+ REST APIs + WebSocket
+        ↓
+Backend (Node + Express + Socket.IO + Render)
+        ↓
+MongoDB Atlas
+```
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```bash
 DevRoom/
@@ -123,62 +90,96 @@ DevRoom/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
+│   │   ├── context/
 │   │   ├── pages/
-│   │   ├── services/
+│   │   ├── utils/
 │   │   └── App.js
+│   └── package.json
 │
 ├── backend/
-│   ├── controllers/
+│   ├── config/
 │   ├── models/
 │   ├── routes/
-│   ├── middleware/
-│   ├── sockets/
-│   └── server.js
+│   ├── socket/
+│   ├── server.js
+│   └── package.json
 │
-├── package.json
 └── README.md
 ```
 
 ---
 
-# ⚙ Installation & Setup
+## 🔌 API Endpoints
 
-## 1. Clone Repository
+### Auth
 
-```bash
-git clone <repository-url>
-cd DevRoom
+```http
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/google
+```
+
+### Rooms
+
+```http
+GET /api/rooms
+POST /api/rooms
+```
+
+### Code Execution
+
+```http
+POST /api/execute
+```
+
+### Health
+
+```http
+GET /api/health
 ```
 
 ---
 
-## 2. Backend Setup
+## ⚙️ Environment Variables
+
+### Backend (`backend/.env`)
+
+```env
+PORT=5000
+NODE_ENV=development
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+GOOGLE_CLIENT_ID=your_google_client_id
+CLIENT_URL=http://localhost:3000
+```
+
+### Frontend (`frontend/.env`)
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+---
+
+## 🚀 Local Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/ay001-web/DevRoom.git
+cd DevRoom
+```
+
+### Backend Setup
 
 ```bash
 cd backend
 npm install
+npm run dev
 ```
 
-Create `.env` file:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-GOOGLE_CLIENT_ID=your_google_client_id
-JUDGE0_API_KEY=your_api_key
-CLIENT_URL=http://localhost:3000
-```
-
-Run backend:
-
-```bash
-npm start
-```
-
----
-
-## 3. Frontend Setup
+### Frontend Setup
 
 ```bash
 cd frontend
@@ -188,57 +189,41 @@ npm start
 
 ---
 
-# 🔒 Security Features
+## 🧠 Challenges Solved During Development
 
-* Password protection
-* JWT token verification
-* Secure API routes
-* Protected room access
-* OAuth authentication support
-
----
-
-# 🚀 Performance Highlights
-
-* Optimized API calls
-* Efficient socket event handling
-* Low-latency room communication
-* Scalable MongoDB storage
-* Clean modular architecture
+* Real-time socket synchronization
+* Production CORS configuration
+* Google OAuth deployment issues
+* MongoDB Atlas authentication setup
+* Frontend–backend environment management
+* Multi-service deployment pipeline
 
 ---
 
-# 📈 Learning Outcomes
+## 📈 Future Improvements
 
-This project helped strengthen expertise in:
-
-* Full-stack application development
-* REST API design
-* Authentication and authorization
-* Real-time systems using WebSockets
-* Cloud database integration
-* Scalable project architecture
-* Production deployment workflows
+* Voice chat inside rooms
+* Video collaboration
+* Cursor presence indicators
+* Code execution sandbox improvements
+* Invite-by-link system
+* AI coding assistant integration
 
 ---
 
-# 🔮 Future Enhancements
+## 👨‍💻 Author
 
-* 🎥 Video conferencing
-* 🤖 AI-powered coding assistant
-* 📝 Code history/versioning
-* 🏆 Competitive coding mode
-* 📊 Analytics dashboard
-* 🎙 Voice collaboration
-
----
-
-# 👨‍💻 Author
-
-## Ayush Yadav
-
-B.Tech — Computer Science & Engineering (Data Science)
-SRM Institute of Science and Technology
+**Ayush Yadav**
+B.Tech CSE (Data Science) — SRM Institute of Science and Technology
 
 GitHub: https://github.com/ay001-web
 
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub.
