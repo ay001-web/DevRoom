@@ -16,6 +16,24 @@ https://devroom-backend-hnbu.onrender.com/api/health
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="./assets/devroom_1_landing_page.png" width="45%" />
+  <img src="./assets/devroom_2_login_page.png" width="45%" />
+</p>
+
+<p align="center">
+  <img src="./assets/devroom_3_dashboard.png" width="45%" />
+  <img src="./assets/devroom_4_create_room.png" width="45%" />
+</p>
+
+<p align="center">
+  <img src="./assets/devroom_5_editor_room.png" width="95%" />
+</p>
+
+---
+
 ## ✨ Features
 
 * 🔐 Authentication using Email/Password and Google OAuth
